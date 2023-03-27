@@ -3,8 +3,8 @@ from data import db_session
 from data.users import User
 from data.jobs import Jobs
 from forms.user import RegisterForm
-from flask_login import login_user
-from forms.user import LoginForm
+# from flask_login import login_user
+# from forms.user import LoginForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -24,12 +24,12 @@ def reqister():
         if form.password.data != form.password_again.data:
             return render_template('register.html', title='Регистрация',
                                    form=form,
-                                   message="Пароли не совпадают")
+                                   message="<!>     ОШИБКА: Пароли не совпадают")
         db_sess = db_session.create_session()
         if db_sess.query(User).filter(User.email == form.email.data).first():
             return render_template('register.html', title='Регистрация',
                                    form=form,
-                                   message="Такой пользователь уже есть")
+                                   message="<!>     ОШИБКА: Такой пользователь уже есть")
         user = User(
             name=form.name.data,
             surname=form.surname.data,
@@ -46,6 +46,7 @@ def reqister():
     return render_template('register.html', title='Регистрация', form=form)
 
 
+'''
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -59,6 +60,7 @@ def login():
                                message="Неправильный логин или пароль",
                                form=form)
     return render_template('login.html', title='Авторизация', form=form)
+'''
 
 
 def main():
