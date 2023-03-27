@@ -3,8 +3,8 @@ from data import db_session
 from data.users import User
 from data.jobs import Jobs
 from forms.user import RegisterForm
-# from flask_login import login_user
-# from forms.user import LoginForm
+from flask_login import login_user
+from forms.user import LoginForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -46,7 +46,6 @@ def reqister():
     return render_template('register.html', title='Регистрация', form=form)
 
 
-'''
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -60,7 +59,6 @@ def login():
                                message="Неправильный логин или пароль",
                                form=form)
     return render_template('login.html', title='Авторизация', form=form)
-'''
 
 
 def main():

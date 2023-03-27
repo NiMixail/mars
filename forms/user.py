@@ -29,7 +29,7 @@ def load_user(user_id):
 
 
 class LoginForm(FlaskForm):
-    username = StringField('E-mail', validators=[DataRequired()])
+    email = EmailField('E-mail', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
     remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Войти')
