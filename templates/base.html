@@ -9,10 +9,25 @@
           crossorigin="anonymous">
     <title>{{ title }}</title>
 </head>
+
 <body>
-<h1><b>Миссия Колонизация Марса</b></h1>
-<h4><i>И на Марсе будут яблони цвести!</i></h4>
+<header>
+    <nav class="navbar navbar-light bg-light">
+
+        <a class="navbar-brand" href="#">МИССИЯ <b>КОЛОНИЗАЦИЯ МАРСА</b></a>
+        <h4><i><a class="navbar-brand" href="#">И на Марсе будут яблони цвести!</a></i></h4>
+        {% if current_user.is_authenticated %}
+        <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
+        {% else %}
+        <p>
+            <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
+            <a class="btn btn-success" href="/login">Войти</a>
+        </p>
+        {% endif %}
+
+    </nav>
+</header>
+</body>
 <hr class="my-4">
 {% block content %}{% endblock %}
-</body>
 </html>
