@@ -23,5 +23,15 @@
         <td>{{job.is_finished}}</td>
     </tr>
 </table>
+{% if current_user.is_authenticated and current_user.id in (job.team_leader, 1)%}
+    <div>
+        <a href="/jobs/{{ job.id }}" class="btn btn-warning">
+            Изменить
+        </a>
+        <a href="/deletejob/{{ job.id }}" class="btn btn-danger">
+            Удалить
+        </a>
+    </div>
+{% endif %}
 {% endfor %}
 {% endblock %}

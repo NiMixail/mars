@@ -13,6 +13,7 @@
     </p>
     {% endfor %}
     </p>
+    {% if current_user.id == 1 %}
     <p>
         {{ form.team_leader.label }}<br>
         {{ form.team_leader(class="form-control") }}<br>
@@ -22,6 +23,7 @@
     </p>
     {% endfor %}
     </p>
+    {% endif %}
     <p>
         {{ form.work_size.label }}<br>
         {{ form.work_size(class="form-control") }}<br>
